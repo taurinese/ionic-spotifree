@@ -1,16 +1,7 @@
 <template>
   <ion-app>
-    <div class="menu" :class="{ active: menuOpened }">
-      <div
-        v-if="$router.currentRoute.value.path == '/home'"
-        class="circles"
-        :class="{ 'opacity-none': menuOpened }"
-      >
-        <div class="circle" id="one"></div>
-        <div class="circle" id="two"></div>
-        <div class="circle" id="three"></div>
-      </div>
-      <div @click="openMenu" class="burger"></div>
+    <div  @click="openMenu" class="menu" :class="{ active: menuOpened }">
+      <div class="burger"></div>
       <div class="menu-opened">
         <IonList inset="true" mode="ios">
           <IonItem
@@ -80,7 +71,7 @@
   </ion-app>
 </template>
 
-<script lang="ts">
+<script>
 import {
   IonApp,
   IonRouterOutlet,
@@ -152,41 +143,6 @@ ion-item {
   --padding-bottom: 12px;
   --padding-top: 12px;
 }
-.circles {
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  position: fixed;
-  z-index: -1;
-  opacity:1;
-  transition: opacity 1s ease-in-out;
-}
-.circles.opacity-none{
-  opacity:0;
-  transition: opacity 0.25s ease-in-out;
-}
-.circle {
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background-color: lightgrey;
-  position: absolute;
-  z-index: -1;
-}
-.circle#one{
-  top:-150px;
-  left:50%;
-}
-.circle#two{
-  bottom:50px;
-  left:70%;
-}
-.circle#three{
-  top:150px;
-  left:-150px;
-}
 .menu {
   position: absolute;
   top: 3%;
@@ -218,12 +174,13 @@ ion-item {
 }
 .menu .menu-opened {
   position: absolute;
-  top: 0;
-  left: -100vw;
-  width: 90vw;
-  height: 95vh;
-  z-index: 5;
-  /* background-color: lightcoral; */
+  top: -3vh;
+  left: -105vw;
+  width: 100vw;
+  height: 100vh;
+  padding:2vh;
+  z-index: 10;
+  background-color: #15202B;
   transform: translateX(0);
   transition: transform 0.5s ease-in-out;
   display: flex;
@@ -244,7 +201,7 @@ ion-item {
   border-radius: 5px;
   background-color: white;
   transition: width 0.5s, border 0.5s;
-  z-index: 10;
+  z-index: 15;
 }
 .burger:before {
   position: absolute;
