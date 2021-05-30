@@ -1,7 +1,7 @@
 <template>
   <ion-app>
-    <div  @click="openMenu" class="menu" :class="{ active: menuOpened }">
-      <div class="burger"></div>
+    <div class="menu" :class="{ active: menuOpened }">
+      <div @click="openMenu" class="burger"></div>
       <div class="menu-opened">
         <IonList inset="true" mode="ios">
           <IonItem
@@ -111,8 +111,8 @@ export default defineComponent({
       megaphoneOutline,
     };
   },
-  created(){
-    console.log(this.$router.currentRoute.value.path)
+  created() {
+    console.log(this.$router.currentRoute.value.path);
   },
   data() {
     return {
@@ -142,6 +142,7 @@ ion-list {
 ion-item {
   --padding-bottom: 12px;
   --padding-top: 12px;
+  color: white;
 }
 .menu {
   position: absolute;
@@ -151,7 +152,7 @@ ion-item {
   width: 40px;
   display: flex;
   align-items: center;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 .menu.active .burger {
   width: 0px;
@@ -178,9 +179,9 @@ ion-item {
   left: -105vw;
   width: 100vw;
   height: 100vh;
-  padding:2vh;
+  padding: 2vh;
   z-index: 10;
-  background-color: #15202B;
+  background-color: #15202b;
   transform: translateX(0);
   transition: transform 0.5s ease-in-out;
   display: flex;

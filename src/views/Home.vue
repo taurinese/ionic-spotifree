@@ -12,11 +12,13 @@
       </div>
       <IonGrid>
         <IonRow>
-          <IonCol class="ion-align-items-center ion-justify-content-center">
+          <IonCol class="ion-align-items-end ion-justify-content-center">
             <IonButton color="dark" size="default">Inscrivez-vous</IonButton>
           </IonCol>
         </IonRow>
       </IonGrid>
+      <NewsSlider></NewsSlider>
+      <SongSlider></SongSlider>
     </ion-content>
   </ion-page>
 </template>
@@ -31,6 +33,8 @@ import {
   IonCol,
 } from "@ionic/vue";
 import { defineComponent } from "vue";
+import NewsSlider from "../components/NewsSlider";
+import SongSlider from "../components/SongSlider";
 
 export default defineComponent({
   name: "Home",
@@ -41,6 +45,8 @@ export default defineComponent({
     IonGrid,
     IonRow,
     IonCol,
+    NewsSlider,
+    SongSlider,
   },
   data() {
     return {
@@ -51,8 +57,15 @@ export default defineComponent({
 </script>
 
 <style scoped>
-ion-col{
-  display:flex;
+ion-grid {
+  height: 100vh;
+}
+ion-row {
+  height: 100%;
+}
+ion-col {
+  display: flex;
+  height: 100%;
 }
 .circles {
   width: 100vw;
