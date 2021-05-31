@@ -1,7 +1,7 @@
 <template>
   <div>
     <IonText class="ion-text-center" color="light" mode="ios">
-      <h1 class="ion-margin-bottom">Nouvelles sorties</h1>
+      <h1 class="ion-margin-bottom">{{ title }}</h1>
     </IonText>
     <div class="song-slider">
       <IonSlides mode="ios">
@@ -85,6 +85,7 @@ export default {
       playCircleOutline,
     };
   },
+  props: [ 'title'],
   components: {
     IonCard,
     IonCardHeader,
@@ -109,6 +110,8 @@ ion-card {
 }
 ion-card-header {
   padding: 0px;
+  padding-left:4px;
+  margin-top:4px;
   text-align: left;
 }
 ion-card-title {
@@ -120,7 +123,7 @@ ion-card-subtitle {
 }
 ion-icon {
   position: absolute;
-  right: 0;
+  right: 4px;
   top: 50%;
   transform: translate(0, -50%);
   width: 30px;

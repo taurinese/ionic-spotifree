@@ -24,7 +24,8 @@
         </IonRow>
       </IonGrid>
       <NewsSlider></NewsSlider>
-      <SongSlider></SongSlider>
+      <SongSlider class="song-margin" title="Nouvelles sorties"></SongSlider>
+      <SongSlider class="song-margin" title="Populaires"></SongSlider>
     </ion-content>
   </ion-page>
 </template>
@@ -78,6 +79,12 @@ ion-col {
 }
 ion-text h2{
   padding:0 12px;
+}
+.song-margin{
+  margin-top:75px;
+}
+.song-margin:last-child{
+  margin-bottom:75px;
 }
 .circles {
   width: 100vw;
