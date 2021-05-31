@@ -1,10 +1,48 @@
 <template>
   <div>
     <IonText class="ion-text-center" color="light" mode="ios">
-      <h1>Nouvelles sorties</h1>
+      <h1 class="ion-margin-bottom">Nouvelles sorties</h1>
     </IonText>
     <div class="song-slider">
-      <IonCard>
+      <IonSlides mode="ios">
+        <IonSlide>
+          <IonCard>
+            <IonImg src="assets/img/discovery.jpg" alt="" ></IonImg>
+            <IonCardHeader>
+              <IonCardTitle color="light">Chanson</IonCardTitle>
+              <IonCardSubtitle>Artiste</IonCardSubtitle>
+              <IonIcon :icon="playCircleOutline"></IonIcon>
+            </IonCardHeader>
+          </IonCard>
+          <IonCard>
+            <IonImg src="assets/img/discovery.jpg" alt="" ></IonImg>
+            <IonCardHeader>
+              <IonCardTitle color="light">Chanson</IonCardTitle>
+              <IonCardSubtitle>Artiste</IonCardSubtitle>
+              <IonIcon :icon="playCircleOutline"></IonIcon>
+            </IonCardHeader>
+          </IonCard>
+        </IonSlide>
+        <IonSlide>
+          <IonCard>
+            <IonImg src="assets/img/discovery.jpg" alt="" ></IonImg>
+            <IonCardHeader>
+              <IonCardTitle color="light">Chanson</IonCardTitle>
+              <IonCardSubtitle>Artiste</IonCardSubtitle>
+              <IonIcon :icon="playCircleOutline"></IonIcon>
+            </IonCardHeader>
+          </IonCard>
+          <IonCard>
+            <IonImg src="assets/img/discovery.jpg" alt="" ></IonImg>
+            <IonCardHeader>
+              <IonCardTitle color="light">Chanson</IonCardTitle>
+              <IonCardSubtitle>Artiste</IonCardSubtitle>
+              <IonIcon :icon="playCircleOutline"></IonIcon>
+            </IonCardHeader>
+          </IonCard>
+        </IonSlide>
+      </IonSlides>
+      <!-- <IonCard>
         <img src="https://picsum.photos/200/100" alt="" />
         <IonCardHeader>
           <IonCardTitle color="light">Chanson</IonCardTitle>
@@ -19,23 +57,7 @@
           <IonCardSubtitle>Artiste</IonCardSubtitle>
           <IonIcon :icon="playCircleOutline"></IonIcon>
         </IonCardHeader>
-      </IonCard>
-      <IonCard>
-        <img src="https://picsum.photos/200/100" alt="" />
-        <IonCardHeader>
-          <IonCardTitle color="light">Chanson</IonCardTitle>
-          <IonCardSubtitle>Artiste</IonCardSubtitle>
-          <IonIcon :icon="playCircleOutline"></IonIcon>
-        </IonCardHeader>
-      </IonCard>
-      <IonCard>
-        <img src="https://picsum.photos/200/100" alt="" />
-        <IonCardHeader>
-          <IonCardTitle color="light">Chanson</IonCardTitle>
-          <IonCardSubtitle>Artiste</IonCardSubtitle>
-          <IonIcon :icon="playCircleOutline"></IonIcon>
-        </IonCardHeader>
-      </IonCard>
+      </IonCard> -->
     </div>
   </div>
 </template>
@@ -49,6 +71,9 @@ import {
   IonCardSubtitle,
   IonText,
   IonIcon,
+  IonSlides,
+  IonSlide,
+  IonImg
 } from "@ionic/vue";
 export default {
   name: "SongSlider",
@@ -67,6 +92,9 @@ export default {
     IonCardSubtitle,
     IonText,
     IonIcon,
+    IonSlides,
+    IonSlide,
+    IonImg
   },
 };
 </script>
@@ -81,6 +109,7 @@ ion-card {
 }
 ion-card-header {
   padding: 0px;
+  text-align: left;
 }
 ion-card-title {
   font-size: 18px;
@@ -101,16 +130,16 @@ ion-icon {
 ion-icon:hover {
   color: gray;
 }
-img {
-  width: 100%;
-  height: 125px;
-  border-radius: 8px;
+
+ion-img::part(image) {
+  border-radius: 10px;
+  width:125px;
 }
 .song-slider {
-  display: flex;
-  flex-flow: row;
+  /* display: flex;
+  flex-flow: row; */
   max-width: 300px;
   margin: auto;
-  overflow-x: scroll;
+  /* overflow-x: scroll; */
 }
 </style>

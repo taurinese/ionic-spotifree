@@ -12,8 +12,14 @@
       </div>
       <IonGrid>
         <IonRow>
-          <IonCol class="ion-align-items-end ion-justify-content-center">
-            <IonButton color="dark" size="default">Inscrivez-vous</IonButton>
+          <IonCol class="ion-align-items-center ion-justify-content-between">
+            <div></div>
+            <IonText color="light" mode="ios">
+              <h2 class="ion-text-center">
+                Découvrez des milliers de musiques libres de droit. Aucune carte de crédit nécessaire.
+              </h2>
+            </IonText>
+            <IonButton href="/register" color="dark" size="default">Inscrivez-vous</IonButton>
           </IonCol>
         </IonRow>
       </IonGrid>
@@ -31,6 +37,7 @@ import {
   IonGrid,
   IonRow,
   IonCol,
+  IonText,
 } from "@ionic/vue";
 import { defineComponent } from "vue";
 import NewsSlider from "../components/NewsSlider";
@@ -47,6 +54,7 @@ export default defineComponent({
     IonCol,
     NewsSlider,
     SongSlider,
+    IonText,
   },
   data() {
     return {
@@ -65,7 +73,11 @@ ion-row {
 }
 ion-col {
   display: flex;
+  flex-flow: column;
   height: 100%;
+}
+ion-text h2{
+  padding:0 12px;
 }
 .circles {
   width: 100vw;
