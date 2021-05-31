@@ -7,7 +7,7 @@
       <IonSlides mode="ios">
         <IonSlide>
           <IonCard>
-            <IonImg src="assets/img/discovery.jpg" alt="" ></IonImg>
+            <img src="assets/img/discovery.jpg" alt="" />
             <IonCardHeader>
               <IonCardTitle color="light">Chanson</IonCardTitle>
               <IonCardSubtitle>Artiste</IonCardSubtitle>
@@ -15,7 +15,7 @@
             </IonCardHeader>
           </IonCard>
           <IonCard>
-            <IonImg src="assets/img/discovery.jpg" alt="" ></IonImg>
+            <img src="assets/img/discovery.jpg" alt="" />
             <IonCardHeader>
               <IonCardTitle color="light">Chanson</IonCardTitle>
               <IonCardSubtitle>Artiste</IonCardSubtitle>
@@ -25,7 +25,7 @@
         </IonSlide>
         <IonSlide>
           <IonCard>
-            <IonImg src="assets/img/discovery.jpg" alt="" ></IonImg>
+            <img src="assets/img/discovery.jpg" alt="" />
             <IonCardHeader>
               <IonCardTitle color="light">Chanson</IonCardTitle>
               <IonCardSubtitle>Artiste</IonCardSubtitle>
@@ -33,7 +33,7 @@
             </IonCardHeader>
           </IonCard>
           <IonCard>
-            <IonImg src="assets/img/discovery.jpg" alt="" ></IonImg>
+            <img src="assets/img/discovery.jpg" alt="" />
             <IonCardHeader>
               <IonCardTitle color="light">Chanson</IonCardTitle>
               <IonCardSubtitle>Artiste</IonCardSubtitle>
@@ -73,7 +73,6 @@ import {
   IonIcon,
   IonSlides,
   IonSlide,
-  IonImg
 } from "@ionic/vue";
 export default {
   name: "SongSlider",
@@ -95,7 +94,6 @@ export default {
     IonIcon,
     IonSlides,
     IonSlide,
-    IonImg
   },
 };
 </script>
@@ -133,8 +131,7 @@ ion-icon {
 ion-icon:hover {
   color: gray;
 }
-
-ion-img::part(image) {
+img {
   border-radius: 10px;
   width:125px;
 }
