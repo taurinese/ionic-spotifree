@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import Search from '../views/Search.vue'
 import Library from '../views/Library.vue'
 import Playlist from "../views/Playlist.vue"
+import Account from "../views/Account.vue"
 
 const routes = [
   {
@@ -28,6 +29,11 @@ const routes = [
     path: '/playlist',
     name: 'Playlist',
     component: Playlist
+  },
+  {
+    path: '/account',
+    name: 'Account',
+    component: Account
   }
 ]
 
