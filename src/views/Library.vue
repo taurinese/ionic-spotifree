@@ -5,47 +5,47 @@
         <h1 class="ion-margin-bottom">Library</h1>
       </ion-text>
       <IonList lines="none" mode="ios">
-        <IonItem>
-            <img src="assets/img/discovery.jpg" alt="">
-            <IonText color="light">
-                <p>Playlist</p>
-                <p>par Utilisateur</p>
-            </IonText>
+        <IonItem href="/playlist">
+          <img src="assets/img/discovery.jpg" alt="" />
+          <IonText color="light">
+            <p>Playlist</p>
+            <p>par Utilisateur</p>
+          </IonText>
         </IonItem>
-        <IonItem>
-            <img src="assets/img/discovery.jpg" alt="">
-            <IonText color="light">
-                <p>Playlist</p>
-                <p>par Utilisateur</p>
-            </IonText>
+        <IonItem href="/playlist">
+          <img src="assets/img/discovery.jpg" alt="" />
+          <IonText color="light">
+            <p>Playlist</p>
+            <p>par Utilisateur</p>
+          </IonText>
         </IonItem>
-        <IonItem>
-            <img src="assets/img/discovery.jpg" alt="">
-            <IonText color="light">
-                <p>Playlist</p>
-                <p>par Utilisateur</p>
-            </IonText>
+        <IonItem href="/playlist">
+          <img src="assets/img/discovery.jpg" alt="" />
+          <IonText color="light">
+            <p>Playlist</p>
+            <p>par Utilisateur</p>
+          </IonText>
         </IonItem>
-        <IonItem>
-            <img src="assets/img/discovery.jpg" alt="">
-            <IonText color="light">
-                <p>Playlist</p>
-                <p>par Utilisateur</p>
-            </IonText>
+        <IonItem href="/playlist">
+          <img src="assets/img/discovery.jpg" alt="" />
+          <IonText color="light">
+            <p>Playlist</p>
+            <p>par Utilisateur</p>
+          </IonText>
         </IonItem>
-        <IonItem>
-            <img src="assets/img/discovery.jpg" alt="">
-            <IonText color="light">
-                <p>Playlist</p>
-                <p>par Utilisateur</p>
-            </IonText>
+        <IonItem href="/playlist">
+          <img src="assets/img/discovery.jpg" alt="" />
+          <IonText color="light">
+            <p>Playlist</p>
+            <p>par Utilisateur</p>
+          </IonText>
         </IonItem>
-        <IonItem>
-            <img src="assets/img/discovery.jpg" alt="">
-            <IonText color="light">
-                <p>Playlist</p>
-                <p>par Utilisateur</p>
-            </IonText>
+        <IonItem href="/playlist">
+          <img src="assets/img/discovery.jpg" alt="" />
+          <IonText color="light">
+            <p>Playlist</p>
+            <p>par Utilisateur</p>
+          </IonText>
         </IonItem>
       </IonList>
     </ion-content>
@@ -70,21 +70,22 @@ export default {
 </script>
 
 <style scoped>
-ion-list{
-    margin-top:48px;
+ion-list {
+  margin-top: 48px;
 }
-ion-item{
-    margin-bottom: 24px;
+ion-item {
+  margin-bottom: 24px;
+  --detail-icon-color: white;
 }
-img{
-    width:100px;
-    border-radius: 10px;
+img {
+  width: 100px;
+  border-radius: 10px;
 }
 ion-text > p {
-    margin:0;
-    margin-left:12px;
+  margin: 0;
+  margin-left: 12px;
 }
-ion-text > p:last-child{
-    color:gray;
+ion-text > p:last-child {
+  color: gray;
 }
 </style>
