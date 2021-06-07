@@ -104,6 +104,41 @@
             </IonButton>
           </IonItem>
         </div>
+        <div v-if="currentTab == 'subscribe'" class="subscribe-content">
+          <IonItem lines="none" color="light">
+            <div class="subscribe-card">
+              <IonLabel color="dark">Abonnement gratuit</IonLabel>
+              <h2>GRATUIT</h2>
+              <ul>
+                <li>Pubs entre chaque musique</li>
+                <li>Playlist en aléatoire</li>
+              </ul>
+              <IonButton color="tertiary">Modifier</IonButton>
+            </div>
+          </IonItem>
+          <IonItem lines="none" color="light">
+            <div class="subscribe-card">
+              <IonLabel color="dark">Abonnement mensuel</IonLabel>
+              <h2>4.99€</h2>
+              <ul>
+                <li>Aucune publicité</li>
+                <li>Écoutez la musique que vous souhaitez</li>
+              </ul>
+              <IonButton color="tertiary">Modifier</IonButton>
+            </div>
+          </IonItem>
+          <IonItem lines="none" color="light">
+            <div class="subscribe-card">
+              <IonLabel color="dark">Abonnement annuel</IonLabel>
+              <h2>49.99€</h2>
+              <ul>
+                <li>Aucune publicité</li>
+                <li>Écoutez la musique que vous souhaitez</li>
+              </ul>
+              <IonButton color="tertiary">Modifier</IonButton>
+            </div>
+          </IonItem>
+        </div>
       </IonList>
     </ion-content>
   </ion-page>
@@ -194,7 +229,7 @@ ion-list {
   width: 90%;
   margin: auto;
   border-radius: 12px;
-  margin-bottom:48px;
+  margin-bottom: 48px;
 }
 ion-input {
   border-bottom: 1px #666666 solid;
@@ -222,5 +257,52 @@ ion-button {
 #disconnect-button,
 #password-button {
   margin: auto;
+}
+
+.subscribe-content ion-item {
+  --padding-start: 10px;
+}
+
+.subscribe-card {
+  /* border: 1px solid red; */
+  border-radius: 8px;
+  padding: 20px;
+  width: 100%;
+  margin: 20px 5px 20px 5px;
+  box-shadow: 0px 0px 7px -3px #000000;
+  /* background: linear-gradient(to right, #4e54c8, #8f94fb); */
+}
+
+.subscribe-card ion-label {
+  font-size: 14px;
+  text-transform: uppercase;
+  text-align: center;
+  transform: translateY(-15px);
+}
+
+.subscribe-card ion-button {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(-50%, 65%);
+  margin-left: 0;
+  overflow-y: visible;
+}
+
+.subscribe-card h2 {
+  text-align: center;
+  background-color: #15202b;
+  /* border-radius: 8px; */
+  color: white;
+  width: calc(100% + 40px);
+  transform: translateX(-20px);
+  padding: 5px 0;
+}
+
+.subscribe-card ul {
+  list-style: none;
+  font-size: 15px;
+  border-top: 1px solid lightgray;
+  padding-top: 8px;
 }
 </style>
