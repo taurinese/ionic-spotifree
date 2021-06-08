@@ -10,32 +10,29 @@
           <div class="active">Register</div>
         </IonItem>
         <IonItem lines="none" color="light">
-          <IonLabel>
+          <IonLabel position="stacked">
             Nom entier
           </IonLabel>
           <IonInput type="text" placeholder="Nom entier"></IonInput>
         </IonItem>
         <IonItem lines="none" color="light">
-          <IonLabel>
+          <IonLabel position="stacked">
             Nom d'utilisateur
           </IonLabel>
           <IonInput type="text" placeholder="Nom d'utilisateur"></IonInput>
         </IonItem>
         <IonItem lines="none" color="light">
-          <IonLabel>
+          <IonLabel position="stacked">
             Adresse mail
           </IonLabel>
           <IonInput type="email" placeholder="Adresse mail"></IonInput>
         </IonItem>
         <IonItem lines="none" color="light">
-          <IonLabel>Mot de passe</IonLabel>
+          <IonLabel position="stacked">Mot de passe</IonLabel>
           <IonInput type="password" placeholder="Mot de passe"></IonInput>
         </IonItem>
         <IonItem color="light">
-          <IonText>
-            <p>Forgot your password?</p>
-          </IonText>
-          <IonButton slot="end" expand="block" color="dark">Log in</IonButton>
+          <IonButton slot="end" expand="block" color="dark">Register</IonButton>
         </IonItem>
       </div>
     </ion-content>
@@ -76,8 +73,10 @@ ion-text p {
   background-color: #f4f5f8;
   border-radius: 10px;
   width: 80%;
-  margin: auto;
-  /* margin-top: 10%; */
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
 }
 ion-item:first-child {
   border-radius: 10px 10px 0 0;
