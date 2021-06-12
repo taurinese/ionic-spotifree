@@ -19,7 +19,7 @@
                 Découvrez des milliers de musiques libres de droit. Aucune carte de crédit nécessaire.
               </h2>
             </IonText>
-            <IonButton href="/register" color="dark" size="default">Inscrivez-vous</IonButton>
+            <IonButton mode="ios" href="/register" color="dark" size="default">Inscrivez-vous</IonButton>
           </IonCol>
         </IonRow>
       </IonGrid>

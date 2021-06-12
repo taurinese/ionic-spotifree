@@ -28,8 +28,14 @@
             <div class="header-img">
               <img
                 class="playlist-header-icons"
-                src="assets/icon/heart.svg"
+                :class="{ liked: isLiked }"
+                :src="
+                  isLiked
+                    ? 'assets/icon/' + full_heart
+                    : 'assets/icon/' + empty_heart
+                "
                 alt=""
+                @click="like"
               />
               <img
                 class="playlist-header-icons"
@@ -72,6 +78,23 @@ export default {
     IonGrid,
     IonRow,
     Song,
+  },
+  data() {
+    return {
+      liked: false,
+      empty_heart: "heart.svg",
+      full_heart: "heart_full.svg",
+    };
+  },
+  computed: {
+    isLiked() {
+      return this.liked;
+    },
+  },
+  methods: {
+    like() {
+      this.liked = !this.liked;
+    },
   },
 };
 </script>
@@ -118,5 +141,9 @@ ion-row:nth-child(2) {
 }
 .songs > ion-item {
   margin-bottom: 12px;
+}
+.liked {
+  filter: invert(25%) sepia(41%) saturate(2706%) hue-rotate(350deg)
+    brightness(92%) contrast(88%) !important;
 }
 </style>
