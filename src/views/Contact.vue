@@ -6,7 +6,7 @@
       </ion-text>
       <div class="block"></div>
       <div class="place">
-        <IonText color="light">
+        <IonText class="text-ml" color="light">
           <h1>Paris</h1>
           <h4>19 rue Yves Toudic, 75010, Paris</h4>
           <h4>contact@ecole-webstart.com</h4>
@@ -14,7 +14,7 @@
         </IonText>
       </div>
       <div class="block">google maps</div>
-      <IonText color="light">
+      <IonText class="text-ml" color="light">
         <h4>Formulaire de contact</h4>
       </IonText>
       <IonInput type="text" class="mb-5" placeholder="Nom entier">
@@ -109,7 +109,7 @@ ion-button {
   margin-top: 10%;
   margin-bottom: 10%;
 }
-ion-text * {
+ion-text.text-ml * {
   margin-left: 10%;
 }
 </style>
