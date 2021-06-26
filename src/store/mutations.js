@@ -33,3 +33,7 @@ export const changeUsername = (state, data) => {
 export const changeEmail = (state, data) => {
   state.user.email = data;
 };
+
+export const plans = (state, data) => {
+    state.plans = data;
+}

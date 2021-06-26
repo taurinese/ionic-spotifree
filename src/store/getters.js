@@ -21,3 +21,7 @@ export const post = (state) => {
 export const token = (state) => {
   return state.token;
 };
+
+export const plans = (state) => {
+  return state.plans;
+};

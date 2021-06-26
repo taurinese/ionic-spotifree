@@ -226,6 +226,30 @@ export const changeEmail = ({ getters, commit }, email) => {
     });
 };
 
+export const changePassword = ({ getters, commit }, passwords) => {
+  axios({
+    method: "post",
+    url: "http://127.0.0.1:8000/api/profile/password",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${getters.token}`,
+    },
+    data: {
+      currentPassword: passwords.current,
+      newPassword: passwords.new,
+      confirmPassword: passwords.confirm,
+    },
+    mode: "cors",
+  })
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((error) => {
+      commit("errors", error);
+    });
+};
+
 export const changeAvatar = ({ getters, commit }, avatar) => {
   console.log(avatar);
   let formData = new FormData();
@@ -249,6 +273,26 @@ export const changeAvatar = ({ getters, commit }, avatar) => {
     mode: "cors",
   })
     .then((response) => {
+      console.log(response);
+      // commit("changeEmail", response.data.email);
+    })
+    .catch((error) => {
+      commit("errors", error);
+    });
+};
+
+export const getPlans = ({ commit }) => {
+  axios({
+    method: "get",
+    url: "http://127.0.0.1:8000/api/plans",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    mode: "cors",
+  })
+    .then((response) => {
+      commit("plans", response.data);
       console.log(response);
       // commit("changeEmail", response.data.email);
     })

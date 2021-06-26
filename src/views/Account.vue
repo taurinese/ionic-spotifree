@@ -104,37 +104,52 @@
         <div v-if="currentTab == 'password'" class="password-content">
           <IonItem lines="none" color="light">
             <IonLabel position="stacked">Mot de passe actuel</IonLabel>
-            <IonInput type="text"></IonInput>
+            <IonInput type="password" v-model="passwords.current"></IonInput>
           </IonItem>
           <IonItem lines="none" color="light">
             <IonLabel position="stacked">Nouveau mot de passe</IonLabel>
-            <IonInput type="text"></IonInput>
+            <IonInput type="password" v-model="passwords.new"></IonInput>
           </IonItem>
           <IonItem lines="none" color="light">
             <IonLabel position="stacked"
               >Confirmer le nouveau mot de passe</IonLabel
             >
-            <IonInput type="text"></IonInput>
+            <IonInput type="password" v-model="passwords.confirm"></IonInput>
           </IonItem>
           <IonItem class="ion-margin-top" lines="none" color="light">
-            <IonButton id="password-button" color="dark" expand="block">
+            <IonButton
+              id="password-button"
+              color="dark"
+              expand="block"
+              @click="changePassword"
+            >
               Définir un nouveau mot de passe
             </IonButton>
           </IonItem>
         </div>
         <div v-if="currentTab == 'subscribe'" class="subscribe-content">
-          <IonItem lines="none" color="light">
-            <div class="subscribe-card">
-              <IonLabel color="dark">Abonnement gratuit</IonLabel>
-              <h2>GRATUIT</h2>
-              <ul>
-                <li>Pubs entre chaque musique</li>
-                <li>Playlist en aléatoire</li>
-              </ul>
-              <IonButton color="tertiary">Modifier</IonButton>
-            </div>
-          </IonItem>
-          <IonItem lines="none" color="light">
+          <div v-if="plans.length > 0">
+            <IonItem
+              lines="none"
+              color="light"
+              v-for="plan in plans"
+              :key="plan"
+            >
+              <div class="subscribe-card">
+                <IonLabel color="dark">Abonnement {{ plan.name }}</IonLabel>
+                <h2 v-if="plan.price != 0">{{ plan.price / 100 }}€</h2>
+                <h2 v-else>GRATUIT</h2>
+                <p v-html="plan.content"></p>
+                <IonButton
+                  v-if="plan.stripe_id != user.subscription.stripe_plan"
+                  color="tertiary"
+                  @click="openModal(plan.stripe_id)"
+                  >Modifier</IonButton
+                >
+              </div>
+            </IonItem>
+          </div>
+          <!-- <IonItem lines="none" color="light">
             <div class="subscribe-card">
               <IonLabel color="dark">Abonnement mensuel</IonLabel>
               <h2>4.99€</h2>
@@ -155,7 +170,7 @@
               </ul>
               <IonButton color="tertiary">Modifier</IonButton>
             </div>
-          </IonItem>
+          </IonItem> -->
         </div>
       </IonList>
     </ion-content>
@@ -175,8 +190,10 @@ import {
   IonButton,
   IonGrid,
   IonRow,
+  modalController,
 } from "@ionic/vue";
 import { mapGetters } from "vuex";
+import StripeModal from "../components/StripeModal.vue";
 export default {
   name: "Account",
   components: {
@@ -203,6 +220,14 @@ export default {
         avatar: null,
       },
       url: "",
+      passwords: {
+        current: "",
+        new: "",
+        confirm: "",
+      },
+      secret: null,
+      stripe: null,
+      card: null,
     };
   },
   mounted() {
@@ -210,8 +235,56 @@ export default {
     this.form.name = this.$store.getters.user.name;
     this.form.username = this.$store.getters.user.username;
     this.form.email = this.$store.getters.user.email;
+    this.$store.dispatch("getPlans");
+    /* this.$nextTick(function() {
+      if (this.currentTab == "subscribe") {
+        this.stripe = window.Stripe(process.env.VUE_APP_STRIPE_PUBLIC_KEY);
+        const elements = this.stripe.elements();
+        this.card = elements.create("card");
+        this.card.mount("#card-element");
+        axios
+          .post(
+            `${process.env.VUE_APP_API_URL}/api/stripe/intent`,
+            {},
+            {
+              headers: {
+                Authorization: `Bearer ${this.token}`,
+              },
+            }
+          )
+          .then((response) => {
+            console.log(response.data);
+            this.secret = response.data.client_secret;
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    }); */
   },
   methods: {
+    async openModal(id) {
+      const modal = await modalController.create({
+        component: StripeModal,
+        cssClass: "my-custom-class",
+        componentProps: {
+          title: "Paiement",
+          id: id,
+          card: this.card,
+          stripe: this.stripe,
+          secret: this.secret,
+          token: this.token,
+        },
+        mode: "ios",
+        swipeToClose: true,
+      });
+      console.log(id);
+      return modal.present();
+    },
+    subscribe(id) {
+      this.showModal = true;
+      console.log(id);
+    },
     switchTab(index) {
       this.currentTab = this.tabs[index];
     },
@@ -230,9 +303,12 @@ export default {
     onFileChange() {
       this.url = URL.createObjectURL(this.form.avatar);
     },
+    changePassword() {
+      this.$store.dispatch("changePassword", this.passwords);
+    },
   },
   computed: {
-    ...mapGetters(["user"]),
+    ...mapGetters(["user", "plans", "token"]),
     isAccount() {
       return this.currentTab == "infos";
     },
