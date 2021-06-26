@@ -1,13 +1,14 @@
 <template>
   <div v-if="searching && search.length > 0">
     <ion-text class="ion-text-center" color="light" mode="ios">
-      <h1 class="ion-margin-bottom">Actualités</h1>
+      <h1 class="ion-margin-bottom">Actualités ({{ search.length }})</h1>
     </ion-text>
     <div class="news">
       <div class="slide">
         <IonIcon
           :icon="chevronBackOutline"
           @click="switchNews('previous')"
+          v-if="search.length > 1"
         ></IonIcon>
         <div class="news-img">
           <img :src="search[index].url_image" alt="" />
@@ -16,6 +17,7 @@
         <IonIcon
           :icon="chevronForwardOutline"
           @click="switchNews('next')"
+          v-if="search.length > 1"
         ></IonIcon>
       </div>
       <ion-text color="light" mode="ios" class="ion-text-center">
