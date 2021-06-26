@@ -47,10 +47,33 @@
           <IonItem lines="none" color="light">
             <IonLabel position="stacked">Avatar</IonLabel>
             <IonItem class="inputs" lines="none" color="light">
-              <IonLabel class="file-label"
+              <IonLabel v-if="form.avatar" class="file-label">{{
+                form.avatar.name
+              }}</IonLabel>
+              <IonLabel v-else class="file-label"
                 >Aucun fichier sélectionné...</IonLabel
               >
-              <IonButton color="dark">Modifier</IonButton>
+              <IonInput
+                class="file-input"
+                type="file"
+                @input="form.avatar = $event.target.files[0]"
+                @change="onFileChange"
+              ></IonInput>
+              <IonButton @click="changeAvatar" color="dark">Ajouter</IonButton>
+            </IonItem>
+          </IonItem>
+          <IonItem lines="none" color="light">
+            <IonLabel position="stacked">Aperçu</IonLabel>
+            <IonItem class="inputs" lines="none" color="light">
+              <img
+                v-if="url"
+                :src="url"
+                alt="form.avatar.name"
+                id="preview"
+                width="100"
+                height="100"
+              />
+              <p v-else>Aucune image sélectionnée...</p>
             </IonItem>
           </IonItem>
           <IonItem lines="none" color="light">
@@ -177,7 +200,9 @@ export default {
         name: "",
         username: "",
         email: "",
+        avatar: null,
       },
+      url: "",
     };
   },
   mounted() {
@@ -194,14 +219,16 @@ export default {
       this.$store.dispatch("changeName", this.form.name);
     },
     changeUsername() {
-      this.$store.dispatch("changeUsername");
-
-      console.log(this.form.username);
+      this.$store.dispatch("changeUsername", this.form.username);
     },
     changeEmail() {
-      this.$store.dispatch("changeEmail");
-
-      console.log(this.form.email);
+      this.$store.dispatch("changeEmail", this.form.email);
+    },
+    changeAvatar() {
+      this.$store.dispatch("changeAvatar", this.form.avatar);
+    },
+    onFileChange() {
+      this.url = URL.createObjectURL(this.form.avatar);
     },
   },
   computed: {
@@ -322,5 +349,15 @@ ion-button {
   font-size: 15px;
   border-top: 1px solid lightgray;
   padding-top: 8px;
+}
+
+.file-input {
+  position: absolute;
+  opacity: 0;
+  width: 70%;
+}
+
+#preview {
+  border-radius: 12px;
 }
 </style>

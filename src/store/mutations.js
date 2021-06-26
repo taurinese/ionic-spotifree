@@ -25,3 +25,11 @@ export const post = (state, data) => {
 export const changeName = (state, data) => {
   state.user.name = data;
 };
+
+export const changeUsername = (state, data) => {
+  state.user.username = data;
+};
+
+export const changeEmail = (state, data) => {
+  state.user.email = data;
+};

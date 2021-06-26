@@ -180,32 +180,79 @@ export const changeName = ({ getters, commit }, name) => {
     });
 };
 
-/* export const changeUsername = ({ commit }, username) => {
+export const changeUsername = ({ getters, commit }, username) => {
+  console.log(getters.token + " : " + username);
   axios({
     method: "post",
-    url: "http://127.0.0.1:8000/api/contact",
+    url: "http://127.0.0.1:8000/api/profile/username",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
+      Authorization: `Bearer ${getters.token}`,
     },
     data: {
       username: username,
     },
     mode: "cors",
-  });
+  })
+    .then((response) => {
+      commit("changeUsername", response.data.username);
+    })
+    .catch((error) => {
+      commit("errors", error);
+    });
 };
 
-export const changeEmail = ({ commit }, email) => {
+export const changeEmail = ({ getters, commit }, email) => {
+  console.log(getters.token + " : " + email);
   axios({
     method: "post",
-    url: "http://127.0.0.1:8000/api/contact",
+    url: "http://127.0.0.1:8000/api/profile/email",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
+      Authorization: `Bearer ${getters.token}`,
     },
     data: {
       email: email,
     },
     mode: "cors",
-  });
-}; */
+  })
+    .then((response) => {
+      commit("changeEmail", response.data.email);
+    })
+    .catch((error) => {
+      commit("errors", error);
+    });
+};
+
+export const changeAvatar = ({ getters, commit }, avatar) => {
+  console.log(avatar);
+  let formData = new FormData();
+  formData.append("avatar", avatar);
+  console.log(formData.get("avatar"));
+  axios({
+    method: "post",
+    url: "http://127.0.0.1:8000/api/profile/avatar",
+    headers: {
+      Accept: "application/json",
+      Authorization: `Bearer ${getters.token}`,
+      "Content-Type":
+        "multipart/form-data; charset=utf-8; boundary=" +
+        Math.random()
+          .toString()
+          .substr(2),
+    },
+    data: {
+      avatar: formData.get("avatar"),
+    },
+    mode: "cors",
+  })
+    .then((response) => {
+      console.log(response);
+      // commit("changeEmail", response.data.email);
+    })
+    .catch((error) => {
+      commit("errors", error);
+    });
+};
