@@ -5,16 +5,25 @@
     </ion-text>
     <div class="news">
       <div class="slide">
-        <IonIcon :icon="chevronBackOutline" @click="switchNews('previous')"></IonIcon>
-        <div class="news-img" :style="{backgroundColor:news[index].backgroundColor}"></div>
-        <IonIcon :icon="chevronForwardOutline" @click="switchNews('next')"></IonIcon>
+        <IonIcon
+          :icon="chevronBackOutline"
+          @click="switchNews('previous')"
+        ></IonIcon>
+        <div class="news-img">
+          <img :src="posts[index].url_image" alt="" />
+        </div>
+
+        <IonIcon
+          :icon="chevronForwardOutline"
+          @click="switchNews('next')"
+        ></IonIcon>
       </div>
       <ion-text color="light" mode="ios" class="ion-text-center">
-        <h3>{{ news[index].title}}</h3>
+        <h3>{{ posts[index].title }}</h3>
       </ion-text>
       <ion-text mode="ios" class="ion-text-center">
         <p>
-          {{ news[index].short}}
+          {{ posts[index].body }}
         </p>
       </ion-text>
     </div>
@@ -30,27 +39,31 @@ export default {
     IonText,
     IonIcon,
   },
+  props: ["posts"],
   data() {
     return {
       news: [
         {
-          "backgroundColor": "red",
-          "title": "Concert des Daft Punk red ",
-          "short": "Ceci est un résumé d'une actualité tu as compris ou quoi de quoi on parle là blabla"
+          backgroundColor: "red",
+          title: "Concert des Daft Punk red ",
+          short:
+            "Ceci est un résumé d'une actualité tu as compris ou quoi de quoi on parle là blabla",
         },
         {
-          "backgroundColor": "white",
-          "title": "Concert des Daft Punk white",
-          "short": "Ceci est un résumé d'une actualité tu as compris ou quoi de quoi on parle là blabla"
+          backgroundColor: "white",
+          title: "Concert des Daft Punk white",
+          short:
+            "Ceci est un résumé d'une actualité tu as compris ou quoi de quoi on parle là blabla",
         },
         {
-          "backgroundColor": "yellow",
-          "title": "Concert des Daft Punk yellow",
-          "short": "Ceci est un résumé d'une actualité tu as compris ou quoi de quoi on parle là blabla"
+          backgroundColor: "yellow",
+          title: "Concert des Daft Punk yellow",
+          short:
+            "Ceci est un résumé d'une actualité tu as compris ou quoi de quoi on parle là blabla",
         },
       ],
-      index: 0
-    }
+      index: 0,
+    };
   },
   setup() {
     return {
@@ -59,20 +72,18 @@ export default {
     };
   },
   methods: {
-    switchNews(target){
-      if(target == "previous"){
-        if(this.index == 0) {
-          this.index = this.news.length - 1
-        }
-        else this.index --;
-      } else if(target == "next"){
-        if(this.index == this.news.length - 1){
+    switchNews(target) {
+      if (target == "previous") {
+        if (this.index == 0) {
+          this.index = this.posts.length - 1;
+        } else this.index--;
+      } else if (target == "next") {
+        if (this.index == this.posts.length - 1) {
           this.index = 0;
-        }
-        else this.index ++;
+        } else this.index++;
       }
       console.log(`Target : ${target}`);
-    }
+    },
   },
 };
 </script>
@@ -94,10 +105,13 @@ ion-icon {
 }
 .news-img {
   width: 300px;
-  height: 200px;
+  /* height: 200px; */
   border-radius: 15px;
   margin: auto;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 ion-text > p {
   width: 300px;

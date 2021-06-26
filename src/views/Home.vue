@@ -10,20 +10,23 @@
         <div class="circle" id="two"></div>
         <div class="circle" id="three"></div>
       </div>
-      <IonGrid>
+      <IonGrid v-if="!user">
         <IonRow>
           <IonCol class="ion-align-items-center ion-justify-content-between">
             <div></div>
             <IonText color="light" mode="ios">
               <h2 class="ion-text-center">
-                Découvrez des milliers de musiques libres de droit. Aucune carte de crédit nécessaire.
+                Découvrez des milliers de musiques libres de droit. Aucune carte
+                de crédit nécessaire.
               </h2>
             </IonText>
-            <IonButton mode="ios" href="/register" color="dark" size="default">Inscrivez-vous</IonButton>
+            <IonButton mode="ios" href="/register" color="dark" size="default"
+              >Inscrivez-vous</IonButton
+            >
           </IonCol>
         </IonRow>
       </IonGrid>
-      <NewsSlider></NewsSlider>
+      <NewsSlider :posts="lastPosts"></NewsSlider>
       <SongSlider class="song-margin" title="Nouvelles sorties"></SongSlider>
       <SongSlider class="song-margin" title="Populaires"></SongSlider>
     </ion-content>
@@ -43,6 +46,7 @@ import {
 import { defineComponent } from "vue";
 import NewsSlider from "../components/NewsSlider";
 import SongSlider from "../components/SongSlider";
+import { mapGetters } from "vuex";
 
 export default defineComponent({
   name: "Home",
@@ -62,6 +66,15 @@ export default defineComponent({
       menu: false,
     };
   },
+  computed: {
+    ...mapGetters(["user", "lastPosts", "posts"]),
+  },
+  methods: {
+    // ...mapActions(["getPosts"]),
+  },
+  mounted() {
+    this.$store.dispatch("getPosts");
+  },
 });
 </script>
 
@@ -77,14 +90,14 @@ ion-col {
   flex-flow: column;
   height: 100%;
 }
-ion-text h2{
-  padding:0 12px;
+ion-text h2 {
+  padding: 0 12px;
 }
-.song-margin{
-  margin-top:75px;
+.song-margin {
+  margin-top: 75px;
 }
-.song-margin:last-child{
-  margin-bottom:75px;
+.song-margin:last-child {
+  margin-bottom: 75px;
 }
 .circles {
   width: 100vw;

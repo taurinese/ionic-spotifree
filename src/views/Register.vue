@@ -13,26 +13,48 @@
           <IonLabel position="stacked">
             Nom entier
           </IonLabel>
-          <IonInput type="text" placeholder="Nom entier"></IonInput>
+          <IonInput
+            v-model="form.name"
+            type="text"
+            placeholder="Nom entier"
+          ></IonInput>
         </IonItem>
         <IonItem lines="none" color="light">
           <IonLabel position="stacked">
             Nom d'utilisateur
           </IonLabel>
-          <IonInput type="text" placeholder="Nom d'utilisateur"></IonInput>
+          <IonInput
+            v-model="form.username"
+            type="text"
+            placeholder="Nom d'utilisateur"
+          ></IonInput>
         </IonItem>
         <IonItem lines="none" color="light">
           <IonLabel position="stacked">
             Adresse mail
           </IonLabel>
-          <IonInput type="email" placeholder="Adresse mail"></IonInput>
+          <IonInput
+            v-model="form.email"
+            type="email"
+            placeholder="Adresse mail"
+          ></IonInput>
         </IonItem>
         <IonItem lines="none" color="light">
           <IonLabel position="stacked">Mot de passe</IonLabel>
-          <IonInput type="password" placeholder="Mot de passe"></IonInput>
+          <IonInput
+            v-model="form.password"
+            type="password"
+            placeholder="Mot de passe"
+          ></IonInput>
         </IonItem>
         <IonItem color="light">
-          <IonButton slot="end" expand="block" color="dark">Register</IonButton>
+          <IonButton
+            @click="register(form)"
+            slot="end"
+            expand="block"
+            color="dark"
+            >Register</IonButton
+          >
         </IonItem>
       </div>
     </ion-content>
@@ -49,6 +71,7 @@ import {
   IonLabel,
   IonButton,
 } from "@ionic/vue";
+import { mapActions } from "vuex";
 export default {
   name: "Register",
   components: {
@@ -59,6 +82,19 @@ export default {
     IonItem,
     IonLabel,
     IonButton,
+  },
+  data() {
+    return {
+      form: {
+        name: "",
+        username: "",
+        email: "",
+        password: "",
+      },
+    };
+  },
+  methods: {
+    ...mapActions(["register"]),
   },
 };
 </script>

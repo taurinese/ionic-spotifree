@@ -13,17 +13,27 @@
           <IonLabel position="stacked">
             Adresse mail
           </IonLabel>
-          <IonInput type="email" placeholder="Adresse mail"></IonInput>
+          <IonInput
+            v-model="form.email"
+            type="email"
+            placeholder="Adresse mail"
+          ></IonInput>
         </IonItem>
         <IonItem lines="none" color="light">
           <IonLabel position="stacked">Mot de passe</IonLabel>
-          <IonInput type="password" placeholder="Mot de passe"></IonInput>
+          <IonInput
+            v-model="form.password"
+            type="password"
+            placeholder="Mot de passe"
+          ></IonInput>
         </IonItem>
         <IonItem color="light">
           <IonText>
             <p>Forgot your password?</p>
           </IonText>
-          <IonButton slot="end" expand="block" color="dark">Log in</IonButton>
+          <IonButton @click="login(form)" slot="end" expand="block" color="dark"
+            >Log in</IonButton
+          >
         </IonItem>
       </div>
     </ion-content>
@@ -40,6 +50,7 @@ import {
   IonLabel,
   IonButton,
 } from "@ionic/vue";
+import { mapActions } from "vuex";
 export default {
   name: "Login",
   components: {
@@ -50,6 +61,17 @@ export default {
     IonItem,
     IonLabel,
     IonButton,
+  },
+  methods: {
+    ...mapActions(["login"]),
+  },
+  data() {
+    return {
+      form: {
+        email: "",
+        password: "",
+      },
+    };
   },
 };
 </script>
