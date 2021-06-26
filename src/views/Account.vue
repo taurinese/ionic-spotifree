@@ -191,8 +191,7 @@ export default {
       this.currentTab = this.tabs[index];
     },
     changeName() {
-      this.$store.dispatch("changeName");
-      console.log(this.form.name);
+      this.$store.dispatch("changeName", this.form.name);
     },
     changeUsername() {
       this.$store.dispatch("changeUsername");

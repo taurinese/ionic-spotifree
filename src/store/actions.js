@@ -157,22 +157,30 @@ export const contact = ({ commit }, form) => {
     });
 };
 
-/* export const changeName = ({ commit }, name) => {
+export const changeName = ({ getters, commit }, name) => {
+  console.log(getters.token + " : " + name);
   axios({
     method: "post",
-    url: "http://127.0.0.1:8000/api/contact",
+    url: "http://127.0.0.1:8000/api/profile/name",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
+      Authorization: `Bearer ${getters.token}`,
     },
     data: {
       name: name,
     },
     mode: "cors",
-  });
+  })
+    .then((response) => {
+      commit("changeName", response.data.name);
+    })
+    .catch((error) => {
+      commit("errors", error);
+    });
 };
 
-export const changeUsername = ({ commit }, username) => {
+/* export const changeUsername = ({ commit }, username) => {
   axios({
     method: "post",
     url: "http://127.0.0.1:8000/api/contact",

@@ -21,3 +21,7 @@ export const search = (state, data) => {
 export const post = (state, data) => {
   state.post = data;
 };
+
+export const changeName = (state, data) => {
+  state.user.name = data;
+};

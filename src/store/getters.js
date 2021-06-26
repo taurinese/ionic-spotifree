@@ -17,3 +17,7 @@ export const search = (state) => {
 export const post = (state) => {
   return state.post;
 };
+
+export const token = (state) => {
+  return state.token;
+};

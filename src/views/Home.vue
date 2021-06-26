@@ -67,7 +67,7 @@ export default defineComponent({
     };
   },
   computed: {
-    ...mapGetters(["user"]),
+    ...mapGetters(["user", "token"]),
   },
   methods: {
     // ...mapActions(["getPosts"]),
