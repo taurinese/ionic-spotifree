@@ -9,6 +9,7 @@ import NewsSingle from "../views/NewsSingle.vue";
 import Contact from "../views/Contact.vue";
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
+import store from "../store";
 
 const routes = [
   {
@@ -39,6 +40,13 @@ const routes = [
     path: "/account",
     name: "Account",
     component: Account,
+    beforeEnter: (to, from, next) => {
+      if (store.getters.user == null) {
+        next({ path: "/login" });
+      } else {
+        next();
+      }
+    },
   },
   {
     path: "/news",

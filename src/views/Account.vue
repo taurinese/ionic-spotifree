@@ -22,13 +22,6 @@
         </IonListHeader>
         <div v-if="currentTab == 'infos'" class="account-content">
           <IonItem lines="none" color="light">
-            <IonLabel position="stacked">Prénom</IonLabel>
-            <IonItem class="inputs" lines="none" color="light">
-              <IonInput type="text"></IonInput>
-              <IonButton color="dark">Modifier</IonButton>
-            </IonItem>
-          </IonItem>
-          <IonItem lines="none" color="light">
             <IonLabel position="stacked">Nom</IonLabel>
             <IonItem class="inputs" lines="none" color="light">
               <IonInput type="text"></IonInput>
