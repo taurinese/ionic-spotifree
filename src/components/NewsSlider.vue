@@ -1,5 +1,32 @@
 <template>
-  <div>
+  <div v-if="searching && search.length > 0">
+    <ion-text class="ion-text-center" color="light" mode="ios">
+      <h1 class="ion-margin-bottom">Actualités</h1>
+    </ion-text>
+    <div class="news">
+      <div class="slide">
+        <IonIcon
+          :icon="chevronBackOutline"
+          @click="switchNews('previous')"
+        ></IonIcon>
+        <div class="news-img">
+          <img :src="search[index].url_image" alt="" />
+        </div>
+
+        <IonIcon
+          :icon="chevronForwardOutline"
+          @click="switchNews('next')"
+        ></IonIcon>
+      </div>
+      <ion-text color="light" mode="ios" class="ion-text-center">
+        <h3>{{ search[index].title }}</h3>
+      </ion-text>
+      <ion-text mode="ios" class="ion-text-center">
+        <p v-html="search[index].body"></p>
+      </ion-text>
+    </div>
+  </div>
+  <div v-else-if="posts.length > 0">
     <ion-text class="ion-text-center" color="light" mode="ios">
       <h1 class="ion-margin-bottom">Actualités</h1>
     </ion-text>
@@ -22,9 +49,7 @@
         <h3>{{ posts[index].title }}</h3>
       </ion-text>
       <ion-text mode="ios" class="ion-text-center">
-        <p>
-          {{ posts[index].body }}
-        </p>
+        <p v-html="posts[index].body"></p>
       </ion-text>
     </div>
   </div>
@@ -33,35 +58,15 @@
 <script>
 import { IonText, IonIcon } from "@ionic/vue";
 import { chevronBackOutline, chevronForwardOutline } from "ionicons/icons";
+import { mapGetters } from "vuex";
 export default {
   name: "NewsSlider",
   components: {
     IonText,
     IonIcon,
   },
-  props: ["posts"],
   data() {
     return {
-      news: [
-        {
-          backgroundColor: "red",
-          title: "Concert des Daft Punk red ",
-          short:
-            "Ceci est un résumé d'une actualité tu as compris ou quoi de quoi on parle là blabla",
-        },
-        {
-          backgroundColor: "white",
-          title: "Concert des Daft Punk white",
-          short:
-            "Ceci est un résumé d'une actualité tu as compris ou quoi de quoi on parle là blabla",
-        },
-        {
-          backgroundColor: "yellow",
-          title: "Concert des Daft Punk yellow",
-          short:
-            "Ceci est un résumé d'une actualité tu as compris ou quoi de quoi on parle là blabla",
-        },
-      ],
       index: 0,
     };
   },
@@ -70,6 +75,13 @@ export default {
       chevronBackOutline,
       chevronForwardOutline,
     };
+  },
+  props: ["searching"],
+  computed: {
+    ...mapGetters({
+      posts: "lastPosts",
+      search: "search",
+    }),
   },
   methods: {
     switchNews(target) {
@@ -84,6 +96,11 @@ export default {
       }
       console.log(`Target : ${target}`);
     },
+  },
+  mounted() {
+    if (this.$store.getters.posts.length == 0) {
+      this.$store.dispatch("getPosts");
+    }
   },
 };
 </script>
@@ -112,6 +129,9 @@ ion-icon {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.news-img img {
+  border-radius: 12px;
 }
 ion-text > p {
   width: 300px;

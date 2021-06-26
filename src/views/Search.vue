@@ -7,11 +7,15 @@
         color="light"
         inputmode="text"
         mode="ios"
+        @keyup.enter="searchPosts(query)"
       ></IonSearchbar>
       <transition name="fade">
         <div class="content" v-if="!query">
           <NewsSlider></NewsSlider>
           <DiscoverSlider></DiscoverSlider>
+        </div>
+        <div v-else-if="searchPosts">
+          <NewsSlider :searching="true"></NewsSlider>
         </div>
       </transition>
     </ion-content>
@@ -21,7 +25,8 @@
 <script>
 import { IonPage, IonContent, IonSearchbar } from "@ionic/vue";
 import NewsSlider from "../components/NewsSlider";
-import DiscoverSlider from "../components/DiscoverSlider"
+import DiscoverSlider from "../components/DiscoverSlider";
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "Search",
   components: {
@@ -29,12 +34,18 @@ export default {
     IonContent,
     IonSearchbar,
     NewsSlider,
-    DiscoverSlider
+    DiscoverSlider,
   },
   data() {
     return {
       query: "",
     };
+  },
+  methods: {
+    ...mapActions(["searchPosts"]),
+  },
+  computed: {
+    ...mapGetters(["search"]),
   },
 };
 </script>
@@ -46,8 +57,8 @@ ion-searchbar {
   margin-top: 75px;
   --border-radius: 25px;
 }
-.content div{
-    margin-bottom:75px;
+.content div {
+  margin-bottom: 75px;
 }
 /* TRANSITIONS */
 .fade-enter-active,

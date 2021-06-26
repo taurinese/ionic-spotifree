@@ -88,3 +88,25 @@ export const getPosts = ({ commit }) => {
       console.log(error);
     });
 };
+
+export const searchPosts = ({ commit }, search) => {
+  axios({
+    method: "post",
+    url: "http://127.0.0.1:8000/api/posts/search",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    data: {
+      search: search,
+    },
+    mode: "cors",
+  })
+    .then((response) => {
+      console.log(response);
+      commit("search", response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};

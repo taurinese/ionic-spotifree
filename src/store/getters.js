@@ -9,3 +9,7 @@ export const lastPosts = (state) => {
 export const posts = (state) => {
   return state.posts;
 };
+
+export const search = (state) => {
+  return state.searchPosts;
+};

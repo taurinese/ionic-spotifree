@@ -26,7 +26,7 @@
           </IonCol>
         </IonRow>
       </IonGrid>
-      <NewsSlider :posts="lastPosts"></NewsSlider>
+      <NewsSlider></NewsSlider>
       <SongSlider class="song-margin" title="Nouvelles sorties"></SongSlider>
       <SongSlider class="song-margin" title="Populaires"></SongSlider>
     </ion-content>
@@ -67,13 +67,10 @@ export default defineComponent({
     };
   },
   computed: {
-    ...mapGetters(["user", "lastPosts", "posts"]),
+    ...mapGetters(["user"]),
   },
   methods: {
     // ...mapActions(["getPosts"]),
-  },
-  mounted() {
-    this.$store.dispatch("getPosts");
   },
 });
 </script>

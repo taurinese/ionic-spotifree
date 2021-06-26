@@ -3,4 +3,5 @@ export default {
   user: null,
   errors: [],
   posts: [],
+  searchPosts: [],
 };
