@@ -89,6 +89,26 @@ export const getPosts = ({ commit }) => {
     });
 };
 
+export const getPost = ({ commit }, id) => {
+  axios({
+    method: "get",
+    url: "http://127.0.0.1:8000/api/posts/" + id,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => {
+      commit("post", response.data[0]);
+      console.log(response);
+      // commit("posts", response.data);
+    })
+    .catch((error) => {
+      commit("errors", error);
+      console.log(error);
+    });
+};
+
 export const searchPosts = ({ commit }, search) => {
   axios({
     method: "post",

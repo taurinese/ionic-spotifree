@@ -10,7 +10,10 @@
           @click="switchNews('previous')"
           v-if="search.length > 1"
         ></IonIcon>
-        <div class="news-img">
+        <div
+          class="news-img"
+          @click="$router.push({ path: '/news/' + search[index].id })"
+        >
           <img :src="search[index].url_image" alt="" />
         </div>
 
@@ -38,7 +41,10 @@
           :icon="chevronBackOutline"
           @click="switchNews('previous')"
         ></IonIcon>
-        <div class="news-img">
+        <div
+          class="news-img"
+          @click="$router.push({ path: '/news/' + posts[index].id })"
+        >
           <img :src="posts[index].url_image" alt="" />
         </div>
 

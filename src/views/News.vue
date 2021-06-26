@@ -5,9 +5,12 @@
         <h1 class="ion-margin-bottom">News</h1>
       </ion-text>
       <div class="news-container">
-        <news-card @click="$router.push({ path: '/news/1' })" />
-        <news-card @click="$router.push({ path: '/news/1' })" />
-        <news-card @click="$router.push({ path: '/news/1' })" />
+        <news-card
+          v-for="post in posts"
+          :key="post"
+          :data="post"
+          @click="$router.push({ path: '/news/' + post.id })"
+        />
       </div>
     </ion-content>
   </ion-page>
@@ -16,6 +19,7 @@
 <script>
 import { IonPage, IonContent, IonText } from "@ionic/vue";
 import NewsCard from "../components/NewsCard.vue";
+import { mapGetters } from "vuex";
 export default {
   name: "News",
   components: {
@@ -23,6 +27,12 @@ export default {
     IonContent,
     NewsCard,
     IonText,
+  },
+  mounted() {
+    this.$store.dispatch("getPosts");
+  },
+  computed: {
+    ...mapGetters(["posts"]),
   },
 };
 </script>
@@ -33,5 +43,8 @@ export default {
 }
 .news-container div:not(:first-child) {
   margin-top: 10%;
+}
+news-card {
+  margin-bottom: 15%;
 }
 </style>

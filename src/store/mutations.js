@@ -17,3 +17,7 @@ export const posts = (state, data) => {
 export const search = (state, data) => {
   state.searchPosts = data;
 };
+
+export const post = (state, data) => {
+  state.post = data;
+};

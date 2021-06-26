@@ -13,3 +13,7 @@ export const posts = (state) => {
 export const search = (state) => {
   return state.searchPosts;
 };
+
+export const post = (state) => {
+  return state.post;
+};

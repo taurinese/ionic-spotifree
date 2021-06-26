@@ -4,4 +4,5 @@ export default {
   errors: [],
   posts: [],
   searchPosts: [],
+  post: [],
 };
