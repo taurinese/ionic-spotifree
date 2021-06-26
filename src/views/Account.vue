@@ -24,22 +24,24 @@
           <IonItem lines="none" color="light">
             <IonLabel position="stacked">Nom</IonLabel>
             <IonItem class="inputs" lines="none" color="light">
-              <IonInput type="text"></IonInput>
-              <IonButton color="dark">Modifier</IonButton>
+              <IonInput type="text" v-model="form.name"></IonInput>
+              <IonButton color="dark" @click="changeName">Modifier</IonButton>
             </IonItem>
           </IonItem>
           <IonItem lines="none" color="light">
             <IonLabel position="stacked">Adresse mail</IonLabel>
             <IonItem class="inputs" lines="none" color="light">
-              <IonInput type="text"></IonInput>
-              <IonButton color="dark">Modifier</IonButton>
+              <IonInput type="text" v-model="form.email"></IonInput>
+              <IonButton color="dark" @click="changeEmail">Modifier</IonButton>
             </IonItem>
           </IonItem>
           <IonItem lines="none" color="light">
             <IonLabel position="stacked">Nom d'utilisateur</IonLabel>
             <IonItem class="inputs" lines="none" color="light">
-              <IonInput type="text"></IonInput>
-              <IonButton color="dark">Modifier</IonButton>
+              <IonInput type="text" v-model="form.username"></IonInput>
+              <IonButton color="dark" @click="changeUsername"
+                >Modifier</IonButton
+              >
             </IonItem>
           </IonItem>
           <IonItem lines="none" color="light">
@@ -151,6 +153,7 @@ import {
   IonGrid,
   IonRow,
 } from "@ionic/vue";
+import { mapGetters } from "vuex";
 export default {
   name: "Account",
   components: {
@@ -170,17 +173,40 @@ export default {
     return {
       tabs: ["infos", "password", "subscribe"],
       currentTab: null,
+      form: {
+        name: "",
+        username: "",
+        email: "",
+      },
     };
   },
   mounted() {
     this.currentTab = this.tabs[0];
+    this.form.name = this.$store.getters.user.name;
+    this.form.username = this.$store.getters.user.username;
+    this.form.email = this.$store.getters.user.email;
   },
   methods: {
     switchTab(index) {
       this.currentTab = this.tabs[index];
     },
+    changeName() {
+      this.$store.dispatch("changeName");
+      console.log(this.form.name);
+    },
+    changeUsername() {
+      this.$store.dispatch("changeUsername");
+
+      console.log(this.form.username);
+    },
+    changeEmail() {
+      this.$store.dispatch("changeEmail");
+
+      console.log(this.form.email);
+    },
   },
   computed: {
+    ...mapGetters(["user"]),
     isAccount() {
       return this.currentTab == "infos";
     },

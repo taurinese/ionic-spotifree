@@ -17,10 +17,20 @@
       <IonText class="text-ml" color="light">
         <h4>Formulaire de contact</h4>
       </IonText>
-      <IonInput type="text" class="mb-5" placeholder="Nom entier">
+      <IonInput
+        type="text"
+        class="mb-5"
+        placeholder="Nom entier"
+        v-model="form.name"
+      >
         <IonIcon :icon="personCircleOutline" size="large"></IonIcon>
       </IonInput>
-      <IonInput class="mb-10" type="email" placeholder="Adresse mail">
+      <IonInput
+        class="mb-10"
+        type="email"
+        placeholder="Adresse mail"
+        v-model="form.email"
+      >
         <IonIcon :icon="mailOutline" size="large"></IonIcon>
       </IonInput>
       <div class="inputs">
@@ -28,14 +38,18 @@
           class="ml"
           type="text"
           placeholder="Objet du message"
+          v-model="form.subject"
         ></IonInput>
         <IonInput
           class="ml"
           type="text"
           placeholder="Corps du message"
+          v-model="form.body"
         ></IonInput>
       </div>
-      <IonButton color="dark" expand="block">Envoyer</IonButton>
+      <IonButton color="dark" expand="block" @click="contact(form)"
+        >Envoyer</IonButton
+      >
     </ion-content>
   </ion-page>
 </template>
@@ -50,6 +64,7 @@ import {
   IonButton,
 } from "@ionic/vue";
 import { personCircleOutline, mailOutline } from "ionicons/icons";
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "Contact",
   components: {
@@ -65,6 +80,29 @@ export default {
       personCircleOutline,
       mailOutline,
     };
+  },
+  computed: {
+    ...mapGetters(["user"]),
+  },
+  data() {
+    return {
+      form: {
+        name: "",
+        email: "",
+        subject: "",
+        body: "",
+      },
+    };
+  },
+  updated() {
+    if (this.$store.getters.user) {
+      this.form.name = this.$store.getters.user.name;
+      this.form.email = this.$store.getters.user.email;
+      // console.log("user");
+    }
+  },
+  methods: {
+    ...mapActions(["contact"]),
   },
 };
 </script>

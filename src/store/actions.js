@@ -110,3 +110,74 @@ export const searchPosts = ({ commit }, search) => {
       console.log(error);
     });
 };
+
+export const contact = ({ commit }, form) => {
+  console.log(form);
+  axios({
+    method: "post",
+    url: "http://127.0.0.1:8000/api/contact",
+    headers: {
+      Accept: "application/json",
+      // "Content-Type": "application/json",
+    },
+    data: {
+      email: form.email,
+      name: form.name,
+      subject: form.subject,
+      body: form.body,
+    },
+    mode: "cors",
+  })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      commit("errors", error);
+      console.log(error);
+    });
+};
+
+/* export const changeName = ({ commit }, name) => {
+  axios({
+    method: "post",
+    url: "http://127.0.0.1:8000/api/contact",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    data: {
+      name: name,
+    },
+    mode: "cors",
+  });
+};
+
+export const changeUsername = ({ commit }, username) => {
+  axios({
+    method: "post",
+    url: "http://127.0.0.1:8000/api/contact",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    data: {
+      username: username,
+    },
+    mode: "cors",
+  });
+};
+
+export const changeEmail = ({ commit }, email) => {
+  axios({
+    method: "post",
+    url: "http://127.0.0.1:8000/api/contact",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    data: {
+      email: email,
+    },
+    mode: "cors",
+  });
+}; */
