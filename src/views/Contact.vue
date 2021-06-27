@@ -64,7 +64,7 @@ import {
   IonButton,
 } from "@ionic/vue";
 import { personCircleOutline, mailOutline } from "ionicons/icons";
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters } from "vuex";
 export default {
   name: "Contact",
   components: {
@@ -102,7 +102,20 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["contact"]),
+    contact(form) {
+      if (
+        this.validateEmail(form.email) &&
+        form.name.trim() &&
+        form.subject.trim() &&
+        form.body.trim()
+      ) {
+        this.$store.dispatch("contact", form);
+      }
+    },
+    validateEmail(email) {
+      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+    },
   },
 };
 </script>

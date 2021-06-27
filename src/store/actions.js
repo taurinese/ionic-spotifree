@@ -32,6 +32,13 @@ export const login = ({ commit }, form) => {
     .catch((error) => {
       commit("errors", error);
       console.log(error);
+      const toast = document.createElement("ion-toast");
+      toast.message = error.response.data.errors.message[0];
+      toast.color = "danger";
+      toast.duration = 4000;
+
+      document.body.appendChild(toast);
+      toast.present();
     });
 };
 
@@ -67,6 +74,13 @@ export const register = ({ commit }, form) => {
     .catch((error) => {
       commit("errors", error);
       console.log(error);
+      const toast = document.createElement("ion-toast");
+      toast.message = error.response.data.errors.message[0];
+      toast.color = "danger";
+      toast.duration = 4000;
+
+      document.body.appendChild(toast);
+      toast.present();
     });
 };
 
@@ -86,6 +100,13 @@ export const getPosts = ({ commit }) => {
     .catch((error) => {
       commit("errors", error);
       console.log(error);
+      const toast = document.createElement("ion-toast");
+      toast.message = "Erreur lors de la récupération des posts";
+      toast.color = "danger";
+      toast.duration = 4000;
+
+      document.body.appendChild(toast);
+      toast.present();
     });
 };
 
@@ -106,6 +127,13 @@ export const getPost = ({ commit }, id) => {
     .catch((error) => {
       commit("errors", error);
       console.log(error);
+      const toast = document.createElement("ion-toast");
+      toast.message = error.response.data.errors.message[0];
+      toast.color = "danger";
+      toast.duration = 4000;
+
+      document.body.appendChild(toast);
+      toast.present();
     });
 };
 
@@ -128,6 +156,13 @@ export const searchPosts = ({ commit }, search) => {
     })
     .catch((error) => {
       console.log(error);
+      const toast = document.createElement("ion-toast");
+      toast.message = error.response.data.errors.message[0];
+      toast.color = "danger";
+      toast.duration = 4000;
+
+      document.body.appendChild(toast);
+      toast.present();
     });
 };
 
@@ -154,6 +189,13 @@ export const contact = ({ commit }, form) => {
     .catch((error) => {
       commit("errors", error);
       console.log(error);
+      const toast = document.createElement("ion-toast");
+      toast.message = error.response.data.errors.message[0];
+      toast.color = "danger";
+      toast.duration = 4000;
+
+      document.body.appendChild(toast);
+      toast.present();
     });
 };
 
@@ -174,9 +216,23 @@ export const changeName = ({ getters, commit }, name) => {
   })
     .then((response) => {
       commit("changeName", response.data.name);
+      const toast = document.createElement("ion-toast");
+      toast.message = "Le nom a été modifié";
+      toast.color = "success";
+      toast.duration = 4000;
+
+      document.body.appendChild(toast);
+      toast.present();
     })
     .catch((error) => {
       commit("errors", error);
+      const toast = document.createElement("ion-toast");
+      toast.message = error.response.data.errors.name[0];
+      toast.color = "danger";
+      toast.duration = 4000;
+
+      document.body.appendChild(toast);
+      toast.present();
     });
 };
 
@@ -197,9 +253,23 @@ export const changeUsername = ({ getters, commit }, username) => {
   })
     .then((response) => {
       commit("changeUsername", response.data.username);
+      const toast = document.createElement("ion-toast");
+      toast.message = "Le pseudo a été modifié";
+      toast.color = "success";
+      toast.duration = 4000;
+
+      document.body.appendChild(toast);
+      toast.present();
     })
     .catch((error) => {
       commit("errors", error);
+      const toast = document.createElement("ion-toast");
+      toast.message = error.response.data.errors.username[0];
+      toast.color = "danger";
+      toast.duration = 4000;
+
+      document.body.appendChild(toast);
+      toast.present();
     });
 };
 
@@ -220,9 +290,23 @@ export const changeEmail = ({ getters, commit }, email) => {
   })
     .then((response) => {
       commit("changeEmail", response.data.email);
+      const toast = document.createElement("ion-toast");
+      toast.message = "L'email a été modifié";
+      toast.color = "success";
+      toast.duration = 4000;
+
+      document.body.appendChild(toast);
+      toast.present();
     })
     .catch((error) => {
       commit("errors", error);
+      const toast = document.createElement("ion-toast");
+      toast.message = error.response.data.errors.email[0];
+      toast.color = "danger";
+      toast.duration = 4000;
+
+      document.body.appendChild(toast);
+      toast.present();
     });
 };
 
@@ -244,9 +328,23 @@ export const changePassword = ({ getters, commit }, passwords) => {
   })
     .then((response) => {
       console.log(response.data);
+      const toast = document.createElement("ion-toast");
+      toast.message = "Le mot de passe a été modifié";
+      toast.color = "success";
+      toast.duration = 4000;
+
+      document.body.appendChild(toast);
+      toast.present();
     })
     .catch((error) => {
       commit("errors", error);
+      const toast = document.createElement("ion-toast");
+      toast.message = error.response.data.errors.password[0];
+      toast.color = "danger";
+      toast.duration = 4000;
+
+      document.body.appendChild(toast);
+      toast.present();
     });
 };
 
@@ -278,6 +376,13 @@ export const changeAvatar = ({ getters, commit }, avatar) => {
     })
     .catch((error) => {
       commit("errors", error);
+      const toast = document.createElement("ion-toast");
+      toast.message = error.response.data.errors.message[0];
+      toast.color = "danger";
+      toast.duration = 4000;
+
+      document.body.appendChild(toast);
+      toast.present();
     });
 };
 
@@ -298,5 +403,12 @@ export const getPlans = ({ commit }) => {
     })
     .catch((error) => {
       commit("errors", error);
+      const toast = document.createElement("ion-toast");
+      toast.message = error.response.data.errors.message[0];
+      toast.color = "danger";
+      toast.duration = 4000;
+
+      document.body.appendChild(toast);
+      toast.present();
     });
 };

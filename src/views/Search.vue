@@ -10,12 +10,17 @@
         @keyup.enter="searchPosts(query)"
       ></IonSearchbar>
       <transition name="fade">
-        <div class="content" v-if="!query">
+        <div class="content" v-if="query.length == 0">
           <NewsSlider></NewsSlider>
           <DiscoverSlider></DiscoverSlider>
         </div>
-        <div v-else-if="searchPosts">
+        <div v-else-if="search.length > 0">
           <NewsSlider :searching="true"></NewsSlider>
+        </div>
+        <div v-else-if="search.length == 0">
+          <IonText color="light">
+            <h3 style="text-align:center;">Aucun résultat... 😔</h3>
+          </IonText>
         </div>
       </transition>
     </ion-content>
@@ -23,7 +28,7 @@
 </template>
 
 <script>
-import { IonPage, IonContent, IonSearchbar } from "@ionic/vue";
+import { IonPage, IonContent, IonSearchbar, IonText } from "@ionic/vue";
 import NewsSlider from "../components/NewsSlider";
 import DiscoverSlider from "../components/DiscoverSlider";
 import { mapActions, mapGetters } from "vuex";
@@ -33,6 +38,7 @@ export default {
     IonPage,
     IonContent,
     IonSearchbar,
+    IonText,
     NewsSlider,
     DiscoverSlider,
   },
