@@ -4,7 +4,7 @@ import router from "../router";
 export const login = ({ commit }, form) => {
   axios({
     method: "post",
-    url: "http://127.0.0.1:8000/api/auth/login",
+    url: `${process.env.VUE_APP_API_URL}/api/auth/login`,
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -38,7 +38,7 @@ export const login = ({ commit }, form) => {
 export const register = ({ commit }, form) => {
   axios({
     method: "post",
-    url: "http://127.0.0.1:8000/api/auth/register",
+    url: `${process.env.VUE_APP_API_URL}/api/auth/register`,
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -73,7 +73,7 @@ export const register = ({ commit }, form) => {
 export const getPosts = ({ commit }) => {
   axios({
     method: "get",
-    url: "http://127.0.0.1:8000/api/posts",
+    url: `${process.env.VUE_APP_API_URL}/api/posts`,
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -92,7 +92,7 @@ export const getPosts = ({ commit }) => {
 export const getPost = ({ commit }, id) => {
   axios({
     method: "get",
-    url: "http://127.0.0.1:8000/api/posts/" + id,
+    url: `${process.env.VUE_APP_API_URL}/api/posts/` + id,
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -112,7 +112,7 @@ export const getPost = ({ commit }, id) => {
 export const searchPosts = ({ commit }, search) => {
   axios({
     method: "post",
-    url: "http://127.0.0.1:8000/api/posts/search",
+    url: `${process.env.VUE_APP_API_URL}/api/posts/search`,
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -135,7 +135,7 @@ export const contact = ({ commit }, form) => {
   console.log(form);
   axios({
     method: "post",
-    url: "http://127.0.0.1:8000/api/contact",
+    url: `${process.env.VUE_APP_API_URL}/api/contact`,
     headers: {
       Accept: "application/json",
       // "Content-Type": "application/json",
@@ -161,7 +161,7 @@ export const changeName = ({ getters, commit }, name) => {
   console.log(getters.token + " : " + name);
   axios({
     method: "post",
-    url: "http://127.0.0.1:8000/api/profile/name",
+    url: `${process.env.VUE_APP_API_URL}/api/profile/name`,
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -184,7 +184,7 @@ export const changeUsername = ({ getters, commit }, username) => {
   console.log(getters.token + " : " + username);
   axios({
     method: "post",
-    url: "http://127.0.0.1:8000/api/profile/username",
+    url: `${process.env.VUE_APP_API_URL}/api/profile/username`,
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -207,7 +207,7 @@ export const changeEmail = ({ getters, commit }, email) => {
   console.log(getters.token + " : " + email);
   axios({
     method: "post",
-    url: "http://127.0.0.1:8000/api/profile/email",
+    url: `${process.env.VUE_APP_API_URL}/api/profile/email`,
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -229,7 +229,7 @@ export const changeEmail = ({ getters, commit }, email) => {
 export const changePassword = ({ getters, commit }, passwords) => {
   axios({
     method: "post",
-    url: "http://127.0.0.1:8000/api/profile/password",
+    url: `${process.env.VUE_APP_API_URL}/api/profile/password`,
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -257,7 +257,7 @@ export const changeAvatar = ({ getters, commit }, avatar) => {
   console.log(formData.get("avatar"));
   axios({
     method: "post",
-    url: "http://127.0.0.1:8000/api/profile/avatar",
+    url: `${process.env.VUE_APP_API_URL}/api/profile/avatar`,
     headers: {
       Accept: "application/json",
       Authorization: `Bearer ${getters.token}`,
@@ -284,7 +284,7 @@ export const changeAvatar = ({ getters, commit }, avatar) => {
 export const getPlans = ({ commit }) => {
   axios({
     method: "get",
-    url: "http://127.0.0.1:8000/api/plans",
+    url: `${process.env.VUE_APP_API_URL}/api/plans`,
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
