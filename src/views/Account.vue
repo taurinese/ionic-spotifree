@@ -277,6 +277,7 @@ export default {
         },
         mode: "ios",
         swipeToClose: true,
+        
       });
       console.log(id);
       return modal.present();
