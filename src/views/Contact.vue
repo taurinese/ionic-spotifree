@@ -4,7 +4,12 @@
       <ion-text class="ion-text-center" color="light" mode="ios">
         <h1 class="ion-margin-bottom">Contact</h1>
       </ion-text>
-      <div class="block"></div>
+      <div class="block">
+        <img
+          src="https://res.cloudinary.com/hyi9bajzn/image/upload/v1624444639/spotifree_osu0dq.png"
+          alt=""
+        />
+      </div>
       <div class="place">
         <IonText class="text-ml" color="light">
           <h1>Paris</h1>
@@ -13,7 +18,17 @@
           <h4>01 42 41 97 76</h4>
         </IonText>
       </div>
-      <div class="block">google maps</div>
+      <div class="block">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2624.35245957368!2d2.3625182656748254!3d48.8705571292887!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1swebstart%20paris!5e0!3m2!1sfr!2sfr!4v1621329510848!5m2!1sfr!2sfr"
+          width="300"
+          height="200"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+        >
+        </iframe>
+      </div>
       <IonText class="text-ml" color="light">
         <h4>Formulaire de contact</h4>
       </IonText>
@@ -127,6 +142,13 @@ export default {
   border-radius: 15px;
   margin: auto;
   background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.block img {
+  margin: auto;
+  width: 80%;
 }
 ion-input {
   --background: white;
